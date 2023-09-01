@@ -1,0 +1,66 @@
+<section class="vh-100"  >
+  <div class="container py-3 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card">
+          <div class="row g-0">
+            <div class="form col-md-6 col-lg-6 d-flex">
+              <div class="card-body p-4 p-lg-5 text-black">
+                  <h1 class="h3 fw-bold mb-3" [routerLink]="''"><i class=" h3 bi bi-box pr-1 d-inline-block"></i> ToDo</h1>
+                  <h5 class="sub--head fw-bold text-center">Sign Up</h5>
+                  <p class="sub--p text-center mb-3 text-muted">Enter your details to create your a PortfolioPlus account</p>
+                <form>
+                  <div class="row mt-3 mb-2">
+                    <div class="col-6">
+                    <label class="form-label" >First Name</label>
+                      <input class="form-control sub--p" type="text">
+                    </div>
+                    <div class="col-6">
+                    <label class="form-label" >Last Name</label>
+                      <input class="form-control sub--p" type="text" >
+                    </div>
+                  </div>
+                  <div class="form-outline mb-2">
+                    <label class="form-label" >Email address</label>
+                    <input type="email" class="form-control"/>
+                  </div>
+                  <div class="form-outline mb-2">
+                    <label class="form-label" >Password</label>
+                    <div class="w-100">
+                      <p-password styleClass="prime-slider-override" [(ngModel)]="pass.value" [toggleMask]="true" #pass></p-password>
+                    </div>
+                  </div>
+                  <!-- Submit button -->
+                  <button type="button" class="btn btn-primary btn-block mt-2 mb-4 w-100">Sign Up</button>
+
+                  <!-- Register buttons -->
+                  <div class="text-center">
+                    <p>Not a member? <a href='' [routerLink]="'../login'">sign in</a></p>
+                    <p>or</p>
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="bi bi-linkedin"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="bi bi-google"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="bi bi-github"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6 d-none d-md-block ">
+              <div class="d-flex align-items-center h-100">
+                <img src="../../../../assets/images/Computer login-rafiki(1).svg"
+                alt="login form" class="img-fluid  d-inline-block" style="border-radius: 1rem 0 0 1rem;" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

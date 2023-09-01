@@ -1,0 +1,61 @@
+section{
+  background-color: #FFF;
+  max-width: 1200px;
+  margin:auto;
+}
+.form{
+  background-color: #eee;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+.card{
+  border-radius: 12px;
+  border: 0;
+  box-shadow: 0px 0px 4px #00000038;
+}
+.card-body{
+  padding: 30px !important;
+}
+.btn-link{
+  background: white;
+  border-radius: 50%;
+  color: #474747;
+}
+.btn , .btn-link{
+  box-shadow: 0px 0 3px #00000021;
+}
+input.form-control{
+  border: 1px solid #474747;
+  border-radius: 5px;
+}
+
+.btn.btn-primary ,.form-check-input:checked{
+  box-shadow: 0 0 0;
+  background-color: #393939;
+  border: 0;
+}
+.form-check-input:focus{
+  box-shadow: 0 0 0;
+  border: .5px solid #474747;
+}
+a{
+  color:#474747;
+}
+.btn:hover{
+  background-color:#474747 ;
+  color:white;
+}
+.form-control{
+  padding: 6px !important;
+}
+p ,.form-label{
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+a{
+  font-size: 16px;
+}
+
+h1{
+  cursor: pointer;
+}

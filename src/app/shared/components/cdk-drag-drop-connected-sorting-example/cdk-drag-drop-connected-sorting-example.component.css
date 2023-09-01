@@ -1,0 +1,120 @@
+.example-container {
+  max-width: 100%;
+  margin: 30px 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.example-list {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 6px;
+  overflow: visible;
+  display: block;
+}
+.example-list > :first-child {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.example-list > :last-child {
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.example-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: grab !important;
+  background: white;
+  font-size: 14px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.myRadioButton{
+  width: 22px;
+  height:  22px;
+  margin: 0px 15px 0 5px;
+}
+
+.example-box{
+  cursor: grabbing;
+}
+
+.click-action{
+  cursor: grabbing !important;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1) 0s;
+  transform: scale(1.005);
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+input{
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 50%;
+  background: #e8e8e8;
+  border: 3px solid #FFF;
+  transition: all .2s;
+  outline: 1px solid #999;
+}
+
+input:hover{
+  cursor: pointer;
+  background: #a1a1a1;
+}
+
+.message {
+  text-decoration: line-through !important;
+  color: #9a9a9a !important;
+}
+.action-btns .btn:active{
+  border:0;
+}
+.my-btn {
+  margin: 2px 5px;
+  background: inherit;
+  border: 0;
+}
+i{
+  font-size: 22px;
+}
+i.edit{
+  color:green;
+}
+i.delete{
+  color:red;
+}
+i.fav{
+  color:rgb(255, 199, 30);
+}

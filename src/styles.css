@@ -1,0 +1,106 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+.prime-slider-override,.p-inputtext.p-component.p-element.p-password-input{
+  width: 100%;
+  border-radius: 5px;
+  border: 0;
+
+}
+.prime-slider-override{
+  border: 0;
+  height: 41px;
+}
+.prime-slider-override,.p-inputtext.p-component.p-element.p-password-input:focus{
+  box-shadow: 0 0 0;
+  border: 0;
+}
+ div.prime-slider-override{
+  border: 1px solid #474747;
+}
+
+*{
+  margin: 0 ;
+  padding :0 ;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-family: 'Cairo', sans-serif;
+  font-family: 'Nunito Sans', sans-serif !important;
+}
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+ul , li , p {
+  margin-bottom: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+
+.main--btn{
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  width: 120px;
+  padding: 4px 20px;
+  min-width: max-content;
+}
+.main--btn:hover{
+  color:white;
+}
+input.form-control:focus{
+  box-shadow: 0 0 0;
+}
+.p-toast-detail {
+  font-size: 14px;
+  margin:0 !important;
+}
+.p-toast-message-content {
+  padding: 8px;
+}
+.ng-tns-c3410864869-0.p-toast.p-component.p-toast-top-right {
+  z-index: 50000;
+  margin-top: 60px;
+}
+.p-toast .p-toast-message .p-toast-message-content .p-icon:not(.p-toast-icon-close-icon) {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.p-toast .p-toast-message .p-toast-message-content .p-toast-summary {
+  font-size: 18px;
+}
+
+.example-list
+{
+
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}
+.example-container
+{
+  width: 100% !important;
+}
+.example-box{
+  padding: 11px 10px !important;
+  cursor: pointer !important;
+}
+
+{
+  cursor: grabbing !important;
+}
+

@@ -1,0 +1,72 @@
+
+.header{
+  height: 80px;
+  padding: 20px 0;
+}
+.logo{
+  cursor: pointer;
+}
+.error-404 {
+  height: calc(100vh - 80px)  ;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.error-404 .container .row .content .sub--head {
+  width: fit-content;
+  background-color: #232c37;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 25px;
+}
+.error-404 .container .row .content .main--head {
+  margin: 0 0 5px;
+  font-weight: 45px;
+  font-weight: bold;
+  font-size: 54px;
+  color: #232c37;
+  font-size: 64px;
+}
+.error-404 .container .row .content .main--p {
+  margin: 0 0 15px;
+}
+.error-404 .container .row .content a {
+  color: #232c37;
+  border: 2px solid #232c37;
+  border-radius: 12px;
+  padding: 5px 15px;
+}
+.error-404 .container .row .content svg {
+  margin-right: 5px;
+}
+.error-404 .container .row .content .back--btn, .error-404 .container .row .content .visit--btn {
+  margin-right: 13px;
+  transition: all 0.3s;
+  font-weight: bold;
+  cursor: pointer;
+}
+.error-404 .container .row .content .back--btn:hover, .error-404 .container .row .content .visit--btn:hover {
+  color: white;
+  background-color: #232c37;
+}
+
+@media (max-width:992px) {
+  img{
+    max-width: 400px;
+    margin: 0 auto;
+    display: inherit;
+  };
+  .main--head{
+    font-size: 40px !important;
+  }
+  .back--btn ,.visit--btn{
+    font-size: 14px;
+  }
+}
+
+.back--btn ,.visit--btn{
+  width: fit-content;
+}
+

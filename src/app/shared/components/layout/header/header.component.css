@@ -1,0 +1,127 @@
+header{
+  position: fixed;
+  background-color: white;
+  z-index: 2000;
+  width: 100%;
+  top: 0;
+  height: 60px;
+  padding: 10px 0 20px ;
+  box-shadow: 0 3px 5px #00000005,0 0 2px #0000000d,0 1px 4px #00000014;
+}
+.logo{
+  cursor: pointer;
+}
+.h3{
+  margin:0 !important;
+  padding:0 !important;
+}
+.profile--content:hover .profile--lable {
+  opacity: 1;
+  visibility: visible;
+}
+.profile--image {
+  position: relative;
+}
+.profile--image .profile--header--image {
+  border-radius: 100%;
+  margin-left: 10px;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+}
+.profile--image .profile--lable {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 45px;
+  right: 10px;
+  border-radius: 16px;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 320px;
+  padding: 15px 30px 0px;
+  background-color: #fff;
+  box-shadow: 0px 0 40px #0b0b0b26;
+  transition: all 0.4s ease-in;
+    transition-delay: 0s;
+  transition-delay: 0.3s;
+  z-index: 1000;
+}
+.profile--image .profile--lable:hover {
+  opacity: 1;
+  visibility: visible;
+}
+.profile--image .profile--lable .profile--circle {
+  margin: 10px auto;
+  text-align: center;
+}
+.profile--image .profile--lable .profile--circle a {
+  font-size: 22px;
+  height: 75px;
+  width: 75px;
+  display: inline-block;
+  align-content: center;
+  display: grid;
+  margin: auto;
+}
+.profile--image .profile--lable img.profile--image {
+  max-width: 75px;
+  max-height: 75px;
+  width: fit-content;
+  border-radius: 100%;
+}
+.profile--image .profile--lable .profile--link a {
+  color:  #4b4b4b;
+  font-weight: bold;
+  letter-spacing: 0.7px;
+  text-transform: capitalize;
+  font-size: 16px;
+}
+.profile--image .profile--lable p {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+.profile--image .profile--lable ul {
+  border-bottom: 2px solid #b6b6b6;
+  padding: 0;
+  padding-bottom: 10px;
+}
+.profile--image .profile--lable ul li {
+  margin-bottom: 10px;
+}
+.profile--image .profile--lable ul a {
+  color:  #4b4b4b;
+  font-weight: 500;
+  font-size: 16px;
+}
+.profile--image .profile--lable a:hover {
+  opacity: 0.8;
+}
+.profile--circle .profile--name {
+  font-size: 16px;
+  color: white;
+  border-radius: 50%;
+  background:  #4b4b4b;
+  padding: 8px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+@media (max-width: 480px) {
+  .profile--circle .profile--name {
+    font-size: 12px;
+ }
+}
+@media (max-width: 768px) {
+  .not--login--user .signup--button {
+    display: none;
+ }
+}
+.not--login--user button {
+  padding: 5px 10px;
+  width: 100px;
+}
+.logout a{
+  color: #4b4b4b;
+}
