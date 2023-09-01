@@ -7,9 +7,10 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 })
 export class HomepageComponent implements OnInit {
+
   parentEmitter !: EventEmitter<string>  ;
   date : Date = new Date();
-  tasks:number = 20 ;
+  tasks = 2;
   inputValue: string = '';
 
   constructor(public messageService: MessageService) {}
@@ -19,7 +20,7 @@ export class HomepageComponent implements OnInit {
   }
 
   submitForm() {
-    if(this.inputValue.length < 5){
+    if(this.inputValue.length < 4){
       this.messageService.add({ severity: 'error', summary: 'InValid', detail: 'Tilte must be greater than 5 character'});
     }else{
       this.parentEmitter.emit(this.inputValue);
@@ -27,6 +28,5 @@ export class HomepageComponent implements OnInit {
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
     }
   }
-
 
 }

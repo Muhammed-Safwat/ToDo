@@ -1,11 +1,11 @@
-<div class="example-container mt-2">
 
+<div class="example-container mt-2">
   <div
     cdkDropList
     #todoList="cdkDropList"
     [cdkDropListData]="todo"
     [cdkDropListConnectedTo]="[doneList]"
-    class="example-list list-container"
+    class="example-list  list-container"
     (cdkDropListDropped)="drop($event)">
     <div class="example-box"  *ngFor="let item of todo" cdkDrag  #itemRef (mousedown)="toggle($event)" (mouseup)="toggle($event)">
       <div class="d-flex align-items-center">
@@ -15,29 +15,35 @@
       <div class="action-btns d-flex algin-items-center">
         <button class="my-btn"><i class="bi bi-pencil-square edit"></i></button>
         <button class="my-btn"><i class="bi bi-trash delete"></i></button>
-        <button class="my-btn"><i class="bi bi-star fav"></i> <i class="bi bi-star-fill fav"></i></button>
+        <button class="my-btn"><i class="bi bi-info-circle fav"></i></button>
       </div>
+    </div>
+    <div class="empty-tasks" [ngClass]="{'d-none' : todo.length>0}" >
+      <img class='img-fluid' src="../../../../assets/images/personal goals checklist-cuate.svg" alt="image">
+      <p class="text-center">Foucs on your day, get things done with ToDo</p>
     </div>
   </div>
 </div>
 
-<div class="example-container">
-  <h2 >Done</h2>
-  <div
-    cdkDropList
-    #doneList="cdkDropList"
-    [cdkDropListData]="done"
-    [cdkDropListConnectedTo]="[todoList]"
-    class="example-list completed"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of done" cdkDrag>
-      <div class="completed-task d-flex align-items-center ">
-        <i class="bi bi-check-lg"></i>
-        <p class="message ">{{item}}</p>
-      </div>
-      <div class="d-flex algin-items-center">
-        <button class="my-btn"><i class="bi bi-star fav"></i></button>
+<div  [ngClass]="{'d-none' : done.length==0}" class="section-title d-flex algin-items-center justfay-content-center mb-2 mt-4">
+  <h5>Completed</h5>
+</div>
+    <div class="example-container" [ngClass]="{'d-none' : done.length==0}">
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[todoList]"
+        class="example-list completed"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of done" cdkDrag>
+          <div class="completed-task d-flex align-items-center ">
+            <i class="bi bi-check-lg" (click)="returnToList(mesg)"></i>
+            <p class="message" #mesg>{{item}}</p>
+          </div>
+          <div class="d-flex algin-items-center">
+            <button class="my-btn"><i class="bi bi-info-circle fav"></i></button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>

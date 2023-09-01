@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CdkDragDropConnectedSortingExampleComponent } from './cdk-drag-drop-connected-sorting-example.component';
+import { CdkDragDropConnectedSortingExample } from './cdk-drag-drop-connected-sorting-example.component';
 
 describe('CdkDragDropConnectedSortingExampleComponent', () => {
-  let component: CdkDragDropConnectedSortingExampleComponent;
-  let fixture: ComponentFixture<CdkDragDropConnectedSortingExampleComponent>;
+  let component: CdkDragDropConnectedSortingExample;
+  let fixture: ComponentFixture<CdkDragDropConnectedSortingExample>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CdkDragDropConnectedSortingExampleComponent]
+      declarations: [CdkDragDropConnectedSortingExample]
     });
-    fixture = TestBed.createComponent(CdkDragDropConnectedSortingExampleComponent);
+    fixture = TestBed.createComponent(CdkDragDropConnectedSortingExample);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

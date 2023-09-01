@@ -1,6 +1,7 @@
+import { ToDoService } from '../../../shared/services/to-do-service.service';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import {Component, EventEmitter, Input, ViewChild, ElementRef, OnInit, SimpleChanges} from '@angular/core';
-import {NgFor ,} from '@angular/common';
+import {NgClass, NgFor ,} from '@angular/common';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -14,17 +15,20 @@ import {
   templateUrl: './cdk-drag-drop-connected-sorting-example.component.html',
   styleUrls: ['./cdk-drag-drop-connected-sorting-example.component.css'],
   standalone: true,
-  imports: [CdkDropList, NgFor, CdkDrag],
+  imports: [CdkDropList, NgFor, CdkDrag , NgClass],
 })
 export class CdkDragDropConnectedSortingExample implements OnInit{
+
   @ViewChild('todoList') todoList !: ElementRef<HTMLDivElement>;
   @Input() eventEmitter !: EventEmitter<string> ;
+
   innerItem : any ;
   message !: string;
 
+  todo = this.todoService.getTodo();
+  done = this.todoService.getToDone();
 
-  todo = ['Go To Gym', 'Pick up groceries', 'Go home', 'Fall asleep'];
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  constructor(private todoService : ToDoService ){}
 
   ngOnInit(): void {
     this.subscribeToParentEmitter();
@@ -41,7 +45,7 @@ export class CdkDragDropConnectedSortingExample implements OnInit{
         event.currentIndex,
       );
     }
-    if(this.innerItem.classList.contains('click-action')){
+    if(this.innerItem?.classList.contains('click-action')){
       this.innerItem.classList.remove('click-action');
     }
   }
@@ -53,14 +57,29 @@ export class CdkDragDropConnectedSortingExample implements OnInit{
   }
 
   toggle(item : any){
-    if(item.target.classList.contains('example-box')){
+    if(item.target?.classList.contains('example-box')){
       this.innerItem = item.target ;
-      item.target.classList.toggle("click-action");
+      item.target?.classList.toggle("click-action");
     }
   }
 
   moveToDone(message: any){
-    console.log(message.innerText)
-    this.done.push(message.innerText);
+    this.todo = this.todo.filter(value => value !== message.innerText);
+    this.todoService.setToDo(this.todo);
+    this.done.unshift(message.innerText);
+  }
+
+  returnToList(message:any){
+    this.done = this.done.filter(value => value !== message.innerText);
+    this.todoService.setToDone(this.done);
+    this.todo.unshift(message.innerText);
+  }
+
+  testData(){
+    console.log('Todo:', this.todo);
+    console.log('Done:', this.done);
+    console.log('Todo Service:', this.todoService.getTodo());
+    console.log('Done Service:', this.todoService.getToDone());
   }
 }
+

@@ -7,6 +7,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { CommonModule } from '@angular/common';
+import { CdkDragDropConnectedSortingExample } from 'src/app/shared/components/cdk-drag-drop-connected-sorting-example/cdk-drag-drop-connected-sorting-example.component';
 
 const routes: Routes =[
   {path:'', component:HomepageComponent}
@@ -20,6 +21,7 @@ const routes: Routes =[
   imports: [
     RouterModule.forChild(routes),
     SharedModule,
+    CdkDragDropConnectedSortingExample,
     FormsModule,
     ToastModule,
     CommonModule

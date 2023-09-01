@@ -6,9 +6,13 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
-import { CdkDragDropConnectedSortingExample } from './components/cdk-drag-drop-connected-sorting-example/cdk-drag-drop-connected-sorting-example.component';
+
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FormsModule } from '@angular/forms';
+import { ToDoService } from './services/to-do-service.service';
+
+import { AccordionModule } from 'primeng/accordion';
+
 const routes: Routes =[];
 @NgModule({
   declarations: [
@@ -21,15 +25,18 @@ const routes: Routes =[];
     RouterModule.forChild(routes),
     CommonModule,
     FormsModule,
-    CdkDragDropConnectedSortingExample,
-    RadioButtonModule
+    RadioButtonModule,
+    AccordionModule
   ],
   exports: [
             RouterModule,
             HeaderComponent,
             FooterComponent,
             CustomDatePipe,
-            CdkDragDropConnectedSortingExample
-          ]
+            AccordionModule
+  ],
+  providers :[
+    ToDoService
+  ]
 })
 export class SharedModule { }

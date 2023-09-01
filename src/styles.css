@@ -80,11 +80,11 @@ input.form-control:focus{
 .p-toast .p-toast-message .p-toast-message-content .p-toast-summary {
   font-size: 18px;
 }
-
+.p-toast .p-toast-message .p-toast-message-content{
+  padding:10px 18px ;
+}
 .example-list
 {
-
-  border: solid 1px #ccc;
   min-height: 60px;
   background: white;
   border-radius: 4px;
@@ -99,8 +99,3 @@ input.form-control:focus{
   padding: 11px 10px !important;
   cursor: pointer !important;
 }
-
-{
-  cursor: grabbing !important;
-}
-

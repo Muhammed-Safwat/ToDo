@@ -2,25 +2,17 @@
 
 <section class="homepage">
   <div class="container">
-    <div class="input-container mb-5">
-      <input  type="text" class="task-input form-control" [(ngModel)]="inputValue"
+    <div class="input-container mb-5  mt-1">
+      <input (keydown.enter)="submitForm()"  type="text" class="task-input form-control" [(ngModel)]="inputValue"
          placeholder="Try type 'buy my old phone tomowrow'">
       <i class="bi bi-box-arrow-down" (click)="submitForm()"></i>
     </div>
     <div class="section-title d-flex algin-items-center justfay-content-center mb-2">
       <h5>{{date | customDate}}</h5>
     </div>
-    <ng-container *ngIf="tasks>0">
-      <div class="inner-container" >
+    <div class="inner-container" >
         <cdk-drag-drop-connected-sorting-example [eventEmitter]="parentEmitter"></cdk-drag-drop-connected-sorting-example>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="tasks<=0">
-      <div class="empty-tasks"  >
-        <img class='img-fluid' src="../../../../assets/images/personal goals checklist-cuate.svg" alt="">
-        <p class="text-center">Foucs on your day, get things done with ToDo</p>
-      </div>
-    </ng-container>
+    </div>
   </div>
 </section>
 <p-toast  position="bottom-right" [showTransitionOptions]="'500ms'"></p-toast>

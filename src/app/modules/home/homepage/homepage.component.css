@@ -1,20 +1,22 @@
 section{
-  padding:30px 0 40px;
+  padding:30px 0 0;
 }
 
-.homepage{
-  margin-top: 60px;
+.homepage {
   background-color: #f6f5f580;
+  min-height: 90vh;
+  padding-top: 75px;
 }
 .input-container{
   position: relative;
 }
 .input-container input{
   height: inherit;
-  font-size: 16px;
-  color: #757474;
-  border: 1px solid #eee;
+  font-size: 18px;
+  color: #464545;
+
   padding: 13px 15px;
+  border: solid 1.5px #ccc;
 }
 .input-container i{
   position: absolute;
@@ -46,6 +48,12 @@ section{
   box-shadow: 0 0 7px black;
   border-radius: 10px;
 }
+
+p{
+  font-size: 14px;
+  color:#4c4c4c
+}
+
 .section-title{
   position: relative;
   justify-content: space-between;
@@ -77,20 +85,3 @@ section{
     width: 30px;
   }
 }
-
-p{
-  font-size: 14px;
-  color:#4c4c4c
-}
-
-.empty-tasks{
-  display: grid;
-  padding: 30px 0;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-}
-.empty-tasks img{
-   height: 300px;
-}
-
