@@ -1,9 +1,8 @@
 .example-container {
   max-width: 100%;
-  margin: 30px 0;
+  margin: 25px 0;
   display: inline-block;
   vertical-align: top;
-
 }
 
 
@@ -77,7 +76,7 @@
   box-shadow: rgba(0, 0, 0, 0.09) 0px 5px 5px -3px, rgba(0, 0, 0, 0.12) 0px 8px 10px 1px, rgba(0, 0, 0, 0.06) 0px 3px 14px 2px;
 }
 
-input{
+input.myRadioButton{
   appearance: none;
   -webkit-appearance: none;
   border-radius: 50%;
@@ -86,8 +85,7 @@ input{
   transition: all .2s;
   outline: 1px solid #999;
 }
-
-input:hover{
+input.myRadioButton:hover{
   cursor: pointer;
   background: #a1a1a1;
 }
@@ -186,4 +184,7 @@ p{
   margin: 0 10px 0 5px;
   font-size: 14px;
   cursor: pointer;
+}
+.opcity-icon{
+  opacity: .7;
 }

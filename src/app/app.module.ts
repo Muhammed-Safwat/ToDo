@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthService } from './shared/services/auth.service';
+import { AuthGuardService } from './shared/core/guards/auth-guard-service.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+               AuthGuardService
+             ],
   bootstrap: [AppComponent],
   exports:[BrowserModule]
 })

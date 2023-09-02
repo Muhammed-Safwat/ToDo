@@ -11,7 +11,12 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { FormsModule } from '@angular/forms';
 import { ToDoService } from './services/to-do-service.service';
 
+
 import { AccordionModule } from 'primeng/accordion';
+import { UpdatePanaelComponent } from './components/update-panael/update-panael.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './core/guards/auth-guard-service.service';
+
 
 const routes: Routes =[];
 @NgModule({
@@ -20,23 +25,24 @@ const routes: Routes =[];
     HeaderComponent,
     FooterComponent,
     CustomDatePipe,
+    UpdatePanaelComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
     FormsModule,
     RadioButtonModule,
-    AccordionModule
+    AccordionModule,
   ],
   exports: [
             RouterModule,
             HeaderComponent,
             FooterComponent,
             CustomDatePipe,
-            AccordionModule
+            AccordionModule,
   ],
   providers :[
-    ToDoService
+    ToDoService,
   ]
 })
 export class SharedModule { }

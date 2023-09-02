@@ -11,10 +11,23 @@
       <h5>{{date | customDate}}</h5>
     </div>
     <div class="inner-container" >
-        <cdk-drag-drop-connected-sorting-example [eventEmitter]="parentEmitter"></cdk-drag-drop-connected-sorting-example>
+        <cdk-drag-drop-connected-sorting-example (editEvent)="handleChildEvent($event)" [completedEmmiter]="completedEmmiter" [eventEmitter]="parentEmitter"></cdk-drag-drop-connected-sorting-example>
     </div>
   </div>
 </section>
 <p-toast  position="bottom-right" [showTransitionOptions]="'500ms'"></p-toast>
 
+<div *ngIf="activeTodo" class="overlay" (click)="closePopup($event)"  [ngStyle]="{ display: overlayVisible ? 'flex' : 'none' }">
+  <div class="popup">
+    <form #editForm="ngForm" class="updateFrom" >
+    <div class="head">
+      <input (click)="markCompleted()"  type="radio" class="myRadioButton"/>
+      <input  class="form-control task-input" type="text" name="title" [(ngModel)]="activeTodo.title"/>
+    </div>
+    <textarea class="form-control" placeholder="Discription"  name="discription" [(ngModel)]="activeTodo.discription"></textarea>
+  </form>
+  </div>
+</div>
+
 <app-footer></app-footer>
+
