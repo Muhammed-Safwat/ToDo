@@ -12,7 +12,7 @@ export class ToDo{
   setStatus(status : boolean){
     this.status = status;
   }
-  
+
   getStatus(){
     return this.status;
   }
