@@ -7,12 +7,9 @@ import {
   moveItemInArray,
   transferArrayItem,
   CdkDrag,
-  CdkDropList,
-} from '@angular/cdk/drag-drop';
+  CdkDropList,} from '@angular/cdk/drag-drop';
 import { MessageService } from 'primeng/api';
 import { ToDo } from '../../modules/ToDo';
-
-
 
 @Component({
   selector: 'cdk-drag-drop-connected-sorting-example',
@@ -21,25 +18,18 @@ import { ToDo } from '../../modules/ToDo';
   standalone: true,
   imports: [CdkDropList, NgFor, CdkDrag ,NgIf , NgClass ,NgStyle , FormsModule ],
 })
+
 export class CdkDragDropConnectedSortingExample implements OnInit{
 
-  @ViewChild('todoList') todoList !: ElementRef<HTMLDivElement>;
   @Input() eventEmitter !: EventEmitter<string> ;
   @Output("editEvent") editEvent = new EventEmitter<ToDo>();
   @Input() completedEmmiter !: EventEmitter<ToDo> ;
-
   innerItem : any ;
   message !: string;
-  todo !: ToDo[] ;
-  done !: ToDo[] ;
 
-
-  constructor(private todoService : ToDoService ,
-              public messageService: MessageService){}
+  constructor(public todoService : ToDoService , public messageService: MessageService){}
 
   ngOnInit(): void {
-    this.todo  = this.todoService.getTodoList();
-    this.done  = this.todoService.getToDoneList();
     this.subscribeToParentEmitter();
     this.subscribeToCompleateEmitter();
   }
@@ -61,19 +51,17 @@ export class CdkDragDropConnectedSortingExample implements OnInit{
     if(this.innerItem?.classList.contains('click-action')){
       this.innerItem.classList.remove('click-action');
     }
-    this.testData();
   }
 
   subscribeToParentEmitter(): void {
       this.eventEmitter.subscribe((data: string) => {
-        this.todo.unshift(new ToDo(data, false ,[] , ''));
+        this.todoService.createTodo(data);
       });
   }
 
   subscribeToCompleateEmitter() : void{
     this.completedEmmiter.subscribe((todo : ToDo) => {
-      this.done.unshift(todo);
-      this.todo =this.todo.filter(el => el.title != todo.title);
+      this.todoService.moveToDone(todo.title);
       this.messageService.add({ severity: 'success', summary: 'keep moving forward!' , detail: "You're closer to your goals than you think"});
     });
   }
@@ -85,67 +73,28 @@ export class CdkDragDropConnectedSortingExample implements OnInit{
     }
   }
 
-  moveToDone(tilte: string){
-    let todoEle !: ToDo ;
-    let newToDo :ToDo[] = [] ;
-    for(let i =0 ;i<this.todo.length ; i++){
-      if(this.todo[i].title !== tilte){
-        newToDo.unshift(this.todo[i]);
-      }else {
-        todoEle = this.todo[i];
-      }
-    }
-    this.done.unshift(todoEle);
-    this.todo = newToDo;
-    this.todoService.setToDo(newToDo);
+  moveToDone(title: string){
+    this.todoService.moveToDone(title);
     this.messageService.add({ severity: 'success', summary: 'keep moving forward!' , detail: "You're closer to your goals than you think"});
   }
 
   returnToList(title:string){
-    let doneEle !: ToDo ;
-    let newDone  : ToDo [] = [] ;
-    for(let i =0 ;i<this.done.length ; i++){
-      if(this.done[i].title !== title){
-        newDone.unshift(this.done[i]);
-      }else {
-        doneEle = this.done[i];
-      }
-    }
-    this.todo.unshift(doneEle);
-    this.done = newDone;
-    this.todoService.setToDone(newDone);
-  }
-
-  testData(){
-    console.log('Notifay Service ----------- ');
-    console.log('Todo:', this.todo);
-    console.log('Done:', this.done);
-    console.log('Todo Service:', this.todoService.getTodoList());
-    console.log('Done Service:', this.todoService.getToDoneList());
+    this.todoService.returnToList(title);
   }
 
   edit(event : any){
-    console.log('Notifay Service ----------- ');
-    let tilte = event.target.closest(".example-box").querySelector('.hiddne-input').value;
+    let tilte = event.target.closest(".example-box").querySelector('.hidden-input').value;
     this.editEvent.emit(this.todoService.getTodo(tilte));
   }
 
   delete(event : any){
-    console.log('Notifay Service ----------- ');
-    let tilte = event.target.closest(".example-box").querySelector('.hiddne-input').value;
-    this.todo = this.todo.filter(el => el.title != tilte);
-    this.todoService.setToDo(this.todo);
-    this.testData();
+    let tilte = event.target.closest(".example-box").querySelector('.hidden-input').value;
+    this.todoService.deleteFromTodo(tilte);
   }
 
   fav(event :any){
-    console.log('Notifay Service ----------- ');
-    let tilte = event.target.closest(".example-box").querySelector('.hiddne-input').value;
-    let todo = this.todoService.getTodo(tilte);
-    if(todo)
-      todo.setStatus(!todo.getStatus());
-    this.testData();
+    let tilte = event.target.closest(".example-box").querySelector('.hidden-input').value;
+    this.todoService.setFav(tilte);
   }
-
 }
 
