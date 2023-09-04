@@ -13,7 +13,7 @@
 <img alt='App Screen' src='images/error-page-todo.png'/>
 
 
-### Project sturcture
+### Project structure
 <pre>
 |-- app
 |   |-- shared
