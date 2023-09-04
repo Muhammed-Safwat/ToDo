@@ -1,15 +1,19 @@
 # Todo
 #### ToDo a user-friendly and efficient online to-do list website that helps you stay organized and productive. 
 ### Login Page 
+<hr>
 <img alt='App Screen' src='images/login-page.png'/>
 
 ### Sign up Page 
+<hr>
 <img alt='App Screen' src='images/signup-page.png'/>
 
 ### Home Page 
+<hr>
 <img alt='App Screen' src='images/home-screen-page.png'/>
 
 ### Error Page 
+<hr>
 <img alt='App Screen' src='images/error-page-todo.png'/>
 
 
