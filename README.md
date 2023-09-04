@@ -1,5 +1,5 @@
 # Todo
-
+#### ToDo a user-friendly and efficient online to-do list website that helps you stay organized and productive. 
 ### Login Page 
 <img alt='App Screen' src='images/login-page.png'/>
 
