@@ -14,7 +14,7 @@
 
 
 ### Project sturcture
-<p>
+<pre>
 |-- app
 |   |-- shared
 |   |   |-- components
@@ -63,4 +63,4 @@
 |-- angular.json
 |-- karma.config.js
 `-- README.md
-</p>
+</pre>
