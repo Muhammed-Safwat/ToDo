@@ -44,9 +44,26 @@ export class CdkDragDropConnectedSortingExample implements OnInit{
         event.previousIndex,
         event.currentIndex,
       );
-      if(event.previousContainer.id=='cdk-drop-list-0'){
-        this.messageService.add({ severity: 'success', summary: ' keep moving forward!' , detail: "You're closer to your goals than you think"});
-      }
+      console.log("---------------------------")
+      this.todoService.toggleStatus(event.container.data[event.currentIndex].id, false).subscribe(
+        success => {
+          if (success) {
+            this.messageService.add({ severity: 'success',
+                                      summary: 'Returned to Todo List' ,
+                                      detail: "You're closer to your goals than you think"});
+          } else {
+            this.messageService.add({ severity: 'error',
+                                      summary: 'Error eccour',
+                                      detail: 'Load Page and Try again'});
+          }
+        },
+        error => {
+          console.log(error);
+          this.messageService.add({ severity: 'error',
+                                      summary: "Load Page and Try again",
+                                      detail: ''});
+        }
+      );
     }
     if(this.innerItem?.classList.contains('click-action')){
       this.innerItem.classList.remove('click-action');
@@ -61,8 +78,8 @@ export class CdkDragDropConnectedSortingExample implements OnInit{
 
   subscribeToCompleateEmitter() : void{
     this.completedEmmiter.subscribe((todo : ToDo) => {
-      this.todoService.moveToDone(todo.title);
-      this.messageService.add({ severity: 'success', summary: 'keep moving forward!' , detail: "You're closer to your goals than you think"});
+      console.log(todo);
+      this.moveToDone(todo.id);
     });
   }
 
@@ -73,28 +90,84 @@ export class CdkDragDropConnectedSortingExample implements OnInit{
     }
   }
 
-  moveToDone(title: string){
-    this.todoService.moveToDone(title);
-    this.messageService.add({ severity: 'success', summary: 'keep moving forward!' , detail: "You're closer to your goals than you think"});
+  moveToDone(id: any){
+    this.todoService.toggleStatus(id,true).subscribe(
+      success => {
+        if (success) {
+          this.messageService.add({ severity: 'success',
+                                    summary: 'keep moving forward!' ,
+                                    detail: "You're closer to your goals than you think"});
+        } else {
+          this.messageService.add({ severity: 'error',
+                                    summary: 'Error eccour',
+                                    detail: 'Load Page and Try again'});
+        }
+      },
+      error => {
+        console.log(error);
+        this.messageService.add({ severity: 'error',
+                                    summary: "",
+                                    detail: 'Load Page and Try again'});
+      }
+    );
   }
 
-  returnToList(title:string){
-    this.todoService.returnToList(title);
+
+  returnToList(id : any){
+      this.todoService.toggleStatus(id,true).subscribe(
+        success => {
+          if (success) {
+            this.messageService.add({ severity: 'success',
+                                      summary: 'Returned to Todo List' ,
+                                      detail: "You're closer to your goals than you think"});
+          } else {
+            this.messageService.add({ severity: 'error',
+                                      summary: 'Error eccour',
+                                      detail: 'Load Page and Try again'});
+          }
+        },
+        error => {
+          console.log(error);
+          this.messageService.add({ severity: 'error',
+                                      summary: "Load Page and Try again",
+                                      detail: ''});
+        }
+      );
   }
 
-  edit(event : any){
-    let tilte = event.target.closest(".example-box").querySelector('.hidden-input').value;
-    this.editEvent.emit(this.todoService.getTodo(tilte));
+  update(event : any){
+    let id = event.target.closest(".example-box").querySelector('.hidden-input').value;
+    this.editEvent.emit(this.todoService.getTodo(id));
   }
+
+
 
   delete(event : any){
     let tilte = event.target.closest(".example-box").querySelector('.hidden-input').value;
-    this.todoService.deleteFromTodo(tilte);
+    this.todoService.deleteFromTodo(tilte).subscribe(
+      success => {
+        if (success) {
+          this.messageService.add({ severity: 'success',
+                                    summary: 'Item Deleted' ,
+                                    detail: "You're closer to your goals than you think"});
+        } else {
+          this.messageService.add({ severity: 'error',
+                                    summary: 'Error eccour',
+                                    detail: 'Load Page and Try again'});
+        }
+      },
+      error => {
+        console.log(error);
+        this.messageService.add({ severity: 'error',
+                                    summary: "Load Page and Try again",
+                                    detail: ''});
+      }
+    );
   }
 
   fav(event :any){
     let tilte = event.target.closest(".example-box").querySelector('.hidden-input').value;
-    this.todoService.setFav(tilte);
+    //this.todoService.setFav(tilte);
   }
 }
 

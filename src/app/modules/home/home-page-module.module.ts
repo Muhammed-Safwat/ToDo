@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { CommonModule } from '@angular/common';
 import { CdkDragDropConnectedSortingExample } from 'src/app/shared/components/cdk-drag-drop-connected-sorting-example/cdk-drag-drop-connected-sorting-example.component';
+import { MessageService } from 'primeng/api';
+import { DisplayMessageServiceService } from 'src/app/shared/services/display-message-service.service';
 const routes: Routes =[
   {path:'', component:HomepageComponent}
 ];
@@ -14,7 +16,6 @@ const routes: Routes =[
 @NgModule({
   declarations: [
      HomepageComponent,
-     
     ],
   imports: [
     RouterModule.forChild(routes),
@@ -24,8 +25,8 @@ const routes: Routes =[
     ToastModule,
     CommonModule,
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[MessageService, DisplayMessageServiceService]
 })
 
-
-export class HamePageModuleModule { }
+export class HomePageModuleModule {}

@@ -1,3 +1,4 @@
+import { LoginComponent } from './modules/auth/login/login.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { CommonModule } from '@angular/common';
 import { NgModule, Component } from '@angular/core';
@@ -7,13 +8,15 @@ import { AuthGuardService } from './shared/core/guards/auth-guard-service.servic
 const routes: Routes = [
   {
     path:'',
-    loadChildren: () => import('./modules/home/hame-page-module.module').then(m=>m.HamePageModuleModule)
-    ,canActivate:[AuthGuardService]
+    loadChildren: () => import('./modules/home/home-page-module.module')
+                        .then(m => m.HomePageModuleModule),
+    canActivate:[AuthGuardService]
   },
   {
-    path:'auth' , loadChildren: () => import('./modules/auth/auth-module.module').then(m=>m.AuthModuleModule)
-  }
-  ,{
+    path:'auth' , loadChildren: () => import('./modules/auth/auth-module.module')
+                                      .then(m => m.AuthModuleModule)
+  },
+  {
     path:'**' , component : NotFoundComponent
   }
 ];

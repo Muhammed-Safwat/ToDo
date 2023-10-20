@@ -1,5 +1,4 @@
 <app-header></app-header>
-
 <section class="homepage">
   <div class="container">
     <div class="input-container mb-5  mt-1">
@@ -16,7 +15,6 @@
   </div>
 </section>
 <p-toast  position="bottom-right" [showTransitionOptions]="'500ms'"></p-toast>
-
 <div *ngIf="activeTodo" class="overlay" (click)="closePopup($event)"  [ngStyle]="{ display: overlayVisible ? 'flex' : 'none' }">
   <div class="popup">
     <form #editForm="ngForm" class="updateFrom" >
@@ -24,10 +22,9 @@
       <input (click)="markCompleted()"  type="radio" class="myRadioButton"/>
       <input  class="form-control task-input" type="text" name="title" [(ngModel)]="activeTodo.title"/>
     </div>
-    <textarea class="form-control" placeholder="Discription"  name="discription" [(ngModel)]="activeTodo.discription"></textarea>
+    <textarea class="form-control" placeholder="Discription"  name="discription" [(ngModel)]="activeTodo.description"></textarea>
   </form>
   </div>
 </div>
-
 <app-footer></app-footer>
 

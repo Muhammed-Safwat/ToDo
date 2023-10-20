@@ -1,17 +1,15 @@
 import { ToDoService } from './../../../shared/services/to-do-service.service';
-import { Title } from '@angular/platform-browser';
-import { Component, EventEmitter, OnDestroy, OnInit, Type } from '@angular/core';
-import { MessageService } from 'primeng/api';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { ToDo } from 'src/app/shared/modules/ToDo';
 
+import { Component, EventEmitter, OnDestroy, OnInit, Type } from '@angular/core';
+import { ToDo } from 'src/app/shared/modules/ToDo';
+import { DisplayMessageServiceService } from 'src/app/shared/services/display-message-service.service';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css'],
-  providers: [MessageService]
+  providers: [DisplayMessageServiceService]
 })
-export class HomepageComponent implements OnInit ,OnDestroy  {
+export class HomepageComponent implements OnInit {
 
   parentEmitter !: EventEmitter<string>  ;
   completedEmmiter !: EventEmitter<ToDo>  ;
@@ -19,29 +17,25 @@ export class HomepageComponent implements OnInit ,OnDestroy  {
   tasks = 2;
   inputValue: string = '';
   overlayVisible: boolean = false;
-
   activeTodo !: ToDo ;
 
-
-
-  constructor(public messageService: MessageService , private todoService :ToDoService) {}
+  constructor(public messageService : DisplayMessageServiceService ,
+              private todoService :ToDoService) {}
 
   ngOnInit(): void {
     this.parentEmitter = new EventEmitter<string>();
     this.completedEmmiter =  new EventEmitter<ToDo>();
-  }
-
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    this.todoService.getAllTodo();
+    this.todoService.getAllDone();
   }
 
   submitForm() {
     if(this.inputValue.length < 4){
-      this.messageService.add({ severity: 'error', summary: 'InValid', detail: 'Tilte must be greater than 5 character'});
+      this.messageService.displayErrorMesg("Not Valid",'Tilte must be greater than 5 character');
     }else{
       this.parentEmitter.emit(this.inputValue);
+      this.messageService.displaySucssfulMesg("Success",this.inputValue+" Added");
       this.inputValue='';
-      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
     }
   }
 
@@ -52,7 +46,6 @@ export class HomepageComponent implements OnInit ,OnDestroy  {
 
   handleChildEvent(todo :any) {
     this.activeTodo = todo;
-    console.log('Received from child:' +todo.title);
     this.openPopup();
   }
 
@@ -61,9 +54,27 @@ export class HomepageComponent implements OnInit ,OnDestroy  {
   }
 
   closePopup(event :any) {
-     if(event.target.classList.contains('overlay'))
+      if(event.target.classList.contains('overlay')){
+        console.log(this.activeTodo.description);
+        this.todoService.updateTodo(this.activeTodo).subscribe(
+          success => {
+            if (success) {
+              this.messageService.displaySucssfulMesg('keep moving forward!' ,
+                                                      "You're closer to your goals than you think" );
+            } else {
+              this.messageService.displaySucssfulMesg('Error eccour' ,
+                                                      "Load Page and Try again");
+            }
+          },
+          error => {
+            console.log(error);
+            this.messageService.displaySucssfulMesg(error.error.message,
+                                                    "Load Page and Try again");
+          }
+        );
         this.overlayVisible = false;
-  }
+      }
 
+    }
 
 }

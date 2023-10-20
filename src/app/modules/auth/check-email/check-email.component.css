@@ -1,0 +1,17 @@
+
+
+.page{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  h3{
+    font-size: 18px;
+  }
+  img{
+    margin:auto;
+    height: 350px;
+    width: 350px;
+  }
+}
+

@@ -124,4 +124,5 @@ header{
 }
 .logout a{
   color: #4b4b4b;
+  cursor: pointer;
 }

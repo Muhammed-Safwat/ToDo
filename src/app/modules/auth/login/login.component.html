@@ -9,15 +9,34 @@
                   <h1 class="h3 fw-bold mb-4" [routerLink]="''"><i class=" h3 bi bi-box pr-1 d-inline-block"></i> ToDo</h1>
                   <h4 class="sub--head fw-bold text-center">Welcome Back</h4>
                   <p class="sub--p text-center mb-2">Please enter your email or another service to continue</p>
-                <form>
-                  <div class="form-outline mb-3 mt-4">
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                  <div class="form-outline mb-2 mt-4">
                     <label class="form-label" >Email address</label>
-                    <input type="email" class="form-control"/>
+                    <input type="email" class="form-control" formControlName="username"/>
+                  </div>
+                  <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)" class="alert mb-1">
+                    <div *ngIf="loginForm.controls['username'].errors">
+                      Please enter email
+                    </div>
                   </div>
                   <div class="form-outline mb-2">
                     <label class="form-label" >Password</label>
                     <div class="w-100">
-                      <p-password styleClass="prime-slider-override" [(ngModel)]="pass.value" [toggleMask]="true" #pass></p-password>
+                      <p-password formControlName="password" styleClass="prime-slider-override" [(ngModel)]="pass.value" [toggleMask]="true" #pass>
+                        <ng-template pTemplate="header">
+                            <h6>Pick a password</h6>
+                        </ng-template>
+                        <ng-template pTemplate="footer">
+
+                            <p class="sug-header">Suggestions</p>
+                            <ul class="password-list" class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                                <li>At least one lowercase</li>
+                                <li>At least one uppercase</li>
+                                <li>At least one numeric</li>
+                                <li>Minimum 8 characters</li>
+                            </ul>
+                        </ng-template>
+                    </p-password>
                     </div>
                   </div>
                   <!-- 2 column grid layout for inline styling -->
@@ -36,21 +55,16 @@
                   </div>
 
                   <!-- Submit button -->
-                  <button type="button" class="btn btn-primary btn-block mb-4 w-100" (click)="login()">Login</button>
+                  <button type="submit" class="btn btn-primary btn-block mb-4 w-100">Login</button>
 
                   <!-- Register buttons -->
                   <div class="text-center">
                     <p>Not a member? <a href='' [routerLink]="'../signup'">Register</a></p>
                     <p>or</p>
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                      <i class="bi bi-linkedin"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-link btn-floating mx-1">
+                    <button type="button" class="btn btn-link btn-floating mx-1" (click)="googleLogin()">
                       <i class="bi bi-google"></i>
                     </button>
-
-                    <button type="button" class="btn btn-link btn-floating mx-1">
+                    <button type="button" class="btn btn-link btn-floating mx-1" (click)="githubLogin()">
                       <i class="bi bi-github"></i>
                     </button>
                   </div>
@@ -68,4 +82,5 @@
       </div>
     </div>
   </div>
+  <p-toast  position="bottom-right" [showTransitionOptions]="'500ms'"></p-toast>
 </section>

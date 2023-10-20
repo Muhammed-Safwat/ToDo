@@ -9,7 +9,10 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { FormsModule } from '@angular/forms';
 import { ToDoService } from './services/to-do-service.service';
 import { AccordionModule } from 'primeng/accordion';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MainInterceptor } from './core/interceptors/main-interceptor';
 
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
 const routes: Routes =[];
 @NgModule({
@@ -25,6 +28,7 @@ const routes: Routes =[];
     FormsModule,
     RadioButtonModule,
     AccordionModule,
+    HttpClientModule
   ],
   exports: [
             RouterModule,
@@ -35,6 +39,11 @@ const routes: Routes =[];
   ],
   providers :[
     ToDoService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:MainInterceptor,
+      multi:true
+    }
   ]
 })
 export class SharedModule { }
