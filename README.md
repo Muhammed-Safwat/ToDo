@@ -1,5 +1,6 @@
 # Todo
 #### ToDo a user-friendly and efficient online to-do list website that helps you stay organized and productive. 
+Hint: This is a Simulation for a real Production application now there is no authentication for the project just click login and it will redirect for home page.  
 ### Login Page 
 <hr>
 <img alt='App Screen' src='images/login-page.png'/>
